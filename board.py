@@ -1,5 +1,5 @@
 #imports
-
+import json
 
 
 
@@ -12,6 +12,8 @@ king = 3
 
 #class
 class Board():
+
+
     taflBoard = {
     "A11":empty,"B11":empty,"C11":empty,"D11":empty,"E11":empty,"F11":empty,"G11":empty,"H11":empty,"I11":empty,"J11":empty,"K11":empty,
     "A10":empty,"B10":empty,"C10":empty,"D10":empty,"E10":empty,"F10":empty,"G10":empty,"H10":empty,"I10":empty,"J10":empty,"K10":empty,
@@ -25,4 +27,11 @@ class Board():
     "A02":empty,"B02":empty,"C02":empty,"D02":empty,"E02":empty,"F02":empty,"G02":empty,"H02":empty,"I02":empty,"J02":empty,"K02":empty,
     "A01":empty,"B01":empty,"C01":empty,"D01":empty,"E01":empty,"F01":empty,"G01":empty,"H01":empty,"I01":empty,"J01":empty,"K01":empty,
     }
-    
+
+    def updateTaflBoard(self):
+        global taflBoard
+
+        jsonBoard = open("board.json", "r")
+
+        taflBoard = json.loads(jsonBoard)
+
