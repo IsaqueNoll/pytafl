@@ -9,6 +9,14 @@ attacker = 1
 defender = 2
 king = 3
 
+#general definitions
+def split(word):
+    return [char for char in word]
+
+def find(element, list):
+    for n in range(len(list)):
+        if element == list[n]:
+            return n
 
 #class
 class Board():
@@ -28,6 +36,7 @@ class Board():
     "A01":empty,"B01":empty,"C01":empty,"D01":empty,"E01":empty,"F01":empty,"G01":empty,"H01":empty,"I01":empty,"J01":empty,"K01":empty,
     }
 
+
     def updateTaflBoard(self):
         global taflBoard
 
@@ -35,3 +44,63 @@ class Board():
 
         taflBoard = json.loads(jsonBoard)
 
+    def square(self, squareName):
+        return taflBoard[squareName]
+
+    def upSquare(self, squareName):
+        alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+
+        collumn = split(squareName)[0]
+        line = split(squareName)[1] + split(squareName)[2]
+
+        if line == "11":
+            return -1
+        elif int(line) < 9:
+            return collumn + "0" + str(int(line) + 1)
+        else:
+            return collumn + str(int(line) + 1)
+
+
+    def downSquare(self, squareName):
+        alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+
+        collumn = split(squareName)[0]
+        line = split(squareName)[1] + split(squareName)[2]
+
+        if line == "1":
+            return -1
+        elif int(line) < 11:
+            return collumn + "0" + str(int(line) - 1)
+        else:
+            return collumn + str(int(line) - 1)
+
+    def leftSquare(self, squareName):
+        alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+
+        collumn = split(squareName)[0]
+        line = split(squareName)[1] + split(squareName)[2]
+
+        if collumn == "A":
+            return -1
+        else:
+            return alphabet[find(collumn, alphabet) - 1] + line
+
+    def rightSquare(self, squareName):
+        alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K"]
+
+        collumn = split(squareName)[0]
+        line = split(squareName)[1] + split(squareName)[2]
+
+        if collumn == "K":
+            return -1
+        else:
+            return alphabet[find(collumn, alphabet) + 1] + line
+
+
+
+board = Board()
+
+print board.upSquare("B05")
+print board.downSquare("B05")
+print board.leftSquare("B05")
+print board.rightSquare("B05")
