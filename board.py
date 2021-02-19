@@ -9,6 +9,8 @@ attacker = 1
 defender = 2
 king = 3
 
+
+
 #general definitions
 def split(word):
     return [char for char in word]
@@ -17,6 +19,9 @@ def find(element, list):
     for n in range(len(list)):
         if element == list[n]:
             return n
+
+
+
 
 #class
 class Board():
@@ -98,6 +103,7 @@ class Board():
 
 
 
+#run
 board = Board()
 
 print board.upSquare("B05")
